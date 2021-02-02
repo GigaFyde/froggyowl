@@ -26,7 +26,7 @@ public class StatusTimer extends TimerTask {
             playerCount = apiResult.getJSONObject("players").get("online").toString();
 
         EmbedBuilder builder = new EmbedBuilder();
-        builder.setTitle("GlassMC Status")
+        builder.setTitle("FroggyOwl Status")
                 .setDescription("Online: " + onlineStatus + "\n Players online: " + playerCount)
                 .setFooter("Updates every 15 minutes | Last updated at")
                 .setTimestamp(Instant.now());
