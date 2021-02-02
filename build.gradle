@@ -1,0 +1,44 @@
+import java.time.Clock
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.google.cloud.tools.jib' version '2.7.1'
+}
+
+group 'dev.gigafyde'
+version '0.0.1-Alpha'
+mainClassName = 'dev.gigafyde.froggyowl.Main'
+sourceCompatibility = 11
+
+repositories {
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    implementation group: 'com.google.guava', name: 'guava', version: '27.0-jre'
+    implementation group: 'org.json', name: 'json', version: '20141113'
+    implementation("net.dv8tion:JDA:4.2.0_222") {
+        exclude module: "opus-java"
+    }
+}
+
+jib {
+    container {
+        mainClassName='dev.gigafyde.froggyowl.Main'
+        creationTime = Clock.systemUTC().instant()
+    }
+}
+
+compileJava {
+    classpath = sourceSets.main.compileClasspath
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:unchecked'
+    options.deprecation = true
+}
