@@ -1,8 +1,10 @@
 package dev.gigafyde.froggyowl.utils;
 
 import java.io.IOException;
+import java.util.Collections;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -11,7 +13,7 @@ import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 
 public class Haste {
-    private static final OkHttpClient client = new OkHttpClient();
+    private static final OkHttpClient httpClient = new OkHttpClient.Builder().protocols(Collections.singletonList(Protocol.HTTP_1_1)).build();
 
     public static String paste(String input) {
         try {
@@ -21,7 +23,7 @@ public class Haste {
                     .post(body)
                     .build();
 
-            Response response = client.newCall(request).execute();
+            Response response = httpClient.newCall(request).execute();
             @SuppressWarnings("ConstantConditions") JSONObject json = new JSONObject(response.body().string());
 
             return "https://hastebin.com/" + json.getString("key");
