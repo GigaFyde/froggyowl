@@ -86,7 +86,7 @@ public class ServerLogListener extends ListenerAdapter {
     }
 
     public static String getTag(User user) {
-        return user.getName() + "#" + user.getDiscriminator();
+        return user.getName() + "#" + user.getDiscriminator() + " (" + user.getId() + ")";
     }
 
     private void log(String message) {
@@ -120,7 +120,7 @@ public class ServerLogListener extends ListenerAdapter {
         }
         log(String.format(Emotes.EDIT + " %s | %s %s's message has been deleted | Content: `%s`",
                 logTime(),
-                event.getChannel().getAsMention().replace("", ""),
+                event.getChannel().getAsMention().replace("`", ""),
                 getUser(message),
                 message));
     }
