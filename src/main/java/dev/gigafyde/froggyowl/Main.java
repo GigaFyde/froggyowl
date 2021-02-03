@@ -1,5 +1,6 @@
 package dev.gigafyde.froggyowl;
 
+import dev.gigafyde.froggyowl.core.Client;
 import dev.gigafyde.froggyowl.database.Database;
 import dev.gigafyde.froggyowl.listeners.ServerLogListener;
 import java.util.Collections;
@@ -23,12 +24,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
         database = new Database();
         jda = JDABuilder.createDefault(System.getenv("TOKEN"))
-                .addEventListeners(new ServerLogListener())
+                .addEventListeners(new Client(), new ServerLogListener())
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .build();
         jda.awaitReady();
-        ServerLogListener.serverlog = jda.getTextChannelById("806141555542065202");
+        ServerLogListener.serverlog = jda.getTextChannelById(System.getenv("SERVERLOG_CHANNEL_ID"));
         TimerTask timerTask = new StatusTimer();
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 600, 900000);
