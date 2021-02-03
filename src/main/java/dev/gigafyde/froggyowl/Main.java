@@ -1,5 +1,6 @@
 package dev.gigafyde.froggyowl;
 
+import dev.gigafyde.froggyowl.commands.CommandList;
 import dev.gigafyde.froggyowl.core.Client;
 import dev.gigafyde.froggyowl.database.Database;
 import dev.gigafyde.froggyowl.listeners.ServerLogListener;
@@ -29,6 +30,7 @@ public class Main {
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .build();
+        new CommandList(client);
         jda.awaitReady();
         ServerLogListener.serverlog = jda.getTextChannelById(System.getenv("SERVERLOG_CHANNEL_ID"));
         TimerTask timerTask = new StatusTimer();
