@@ -81,7 +81,7 @@ public class Database {
     }
 
     public Long getStatusMessageId() {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement("SELECT `message_id` FROM `" + databaseName + "`.`discord_bot`")) {
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement("SELECT `message_id` FROM `" + databaseName + "`.`discord_bot` LIMIT 1")) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 resultSet.next();
                 return resultSet.getLong("message_id");

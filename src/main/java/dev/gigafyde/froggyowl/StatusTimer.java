@@ -36,7 +36,7 @@ public class StatusTimer extends TimerTask {
             embedMessage.editMessage(builder.build()).override(true).queue();
         } catch (Exception e) {
             System.out.print(e);
-            jda.getTextChannelById(System.getenv("STATUS_CHANNEL_ID")).sendMessage(builder.build()).override(true).queue(message1 -> Main.database.setStatusMessageId(message1.getIdLong()));
+            jda.getTextChannelById(System.getenv("STATUS_CHANNEL_ID")).sendMessage(builder.build()).override(true).queue(message -> Main.database.setStatusMessageId(message.getIdLong()));
         }
     }
 
