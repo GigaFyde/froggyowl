@@ -23,8 +23,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         database = new Database();
+        Client client = new Client();
         jda = JDABuilder.createDefault(System.getenv("TOKEN"))
-                .addEventListeners(new Client(), new ServerLogListener())
+                .addEventListeners(client, new ServerLogListener())
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .build();
