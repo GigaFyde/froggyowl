@@ -1,13 +1,7 @@
 <configuration>
     <timestamp key="date" datePattern="dd-MM-yyyy"/>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
-        </filter>
-        <encoder>
-            <pattern>%highlight([%d{dd-MM-yyyy}][%d{HH:mm:ss}] [%-5level] [%t] [%logger{36}]:) %msg%n</pattern>
-        </encoder>
-    </appender>
+    <logger name="org.mongodb.driver.cluster" level="WARN" />
+    <logger name="org.mongodb.driver.connection" level="WARN" />
     <appender name="DEBUG" class="ch.qos.logback.core.FileAppender">
         <file>logs/debug/${date}.log</file>
         <encoder>
@@ -23,9 +17,22 @@
             <pattern>[%d{dd-MM-yyyy}][%d{HH:mm:ss}] [%-5level] [%t] [%logger{36}]: %msg%n</pattern>
         </encoder>
     </appender>
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%highlight([%d{dd-MM-yyyy}][%d{HH:mm:ss}] [%-5level] [%t] [%logger{36}]:) %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="Sentry" class="io.sentry.logback.SentryAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
     <root level="DEBUG">
-        <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEBUG"/>
         <appender-ref ref="WARN"/>
+    </root>
+    <root level="INFO">
+        <appender-ref ref="Console" />
+        <appender-ref ref="Sentry" />
     </root>
 </configuration>

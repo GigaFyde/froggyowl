@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'dev.gigafyde'
-version '0.0.1-Alpha'
+version '1.1.0'
 mainClassName = 'dev.gigafyde.froggyowl.Main'
 sourceCompatibility = 11
 
@@ -17,8 +17,7 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    implementation 'io.sentry:sentry-logback:4.0.0'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
     // https://mvnrepository.com/artifact/com.google.guava/guava
