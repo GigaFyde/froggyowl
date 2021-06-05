@@ -33,6 +33,15 @@ dependencies {
 }
 
 jib {
+    from {
+        image = 'arm64v8/openjdk:11-jre'
+        platforms {
+            platform {
+                architecture = 'arm64'
+                os = 'linux'
+            }
+        }
+    }
     container {
         mainClassName='dev.gigafyde.froggyowl.Main'
         creationTime = Clock.systemUTC().instant()
