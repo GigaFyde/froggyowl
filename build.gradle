@@ -3,13 +3,14 @@ import java.time.Clock
 plugins {
     id 'java'
     id 'application'
-    id 'com.google.cloud.tools.jib' version '3.1.0'
+    id 'com.google.cloud.tools.jib' version '3.1.4'
 }
 
 group 'dev.gigafyde'
-version '1.1.0'
+version '1.1.1'
 mainClassName = 'dev.gigafyde.froggyowl.Main'
-sourceCompatibility = 11
+sourceCompatibility = 16
+targetCompatibility = 16
 
 repositories {
     mavenCentral()
@@ -37,13 +38,7 @@ dependencies {
 
 jib {
     from {
-        image = 'arm64v8/openjdk:11-jre'
-        platforms {
-            platform {
-                architecture = 'arm64'
-                os = 'linux'
-            }
-        }
+        image = 'adoptopenjdk/openjdk16:jre-16.0.1_9-ubuntu'
     }
     container {
         mainClassName='dev.gigafyde.froggyowl.Main'
