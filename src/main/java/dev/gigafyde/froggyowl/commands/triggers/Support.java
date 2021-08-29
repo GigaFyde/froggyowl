@@ -10,7 +10,9 @@ public class Support extends Command {
     }
 
     public void execute(CommandEvent event) {
-        event.getTrigger().reply("Create a support ticket here!\n\n" +
-                "https://froggyowlnetwork.enjin.com/support").mentionRepliedUser(false).queue();
+        event.getTrigger().reply("""
+                Create a support ticket here!
+
+                https://kingspond.enjin.com/support""").mentionRepliedUser(false).queue();
     }
 }

@@ -5,12 +5,14 @@ import dev.gigafyde.froggyowl.core.command.CommandEvent;
 
 public class FoStore extends Command {
     public FoStore() {
-        this.name = "fostore";
-        this.triggers = new String[]{"fostore"};
+        this.name = "kpstore";
+        this.triggers = new String[]{"kpstore"};
     }
 
     public void execute(CommandEvent event) {
-        event.getTrigger().reply("Check out the FroggyOwl Store here!\n\n" +
-                "https://froggyowlnetwork.enjin.com/shop").mentionRepliedUser(false).queue();
+        event.getTrigger().reply("""
+                Check out the King's Pond Store here!
+
+                https://kingspond.enjin.com//shop""").mentionRepliedUser(false).queue();
     }
 }

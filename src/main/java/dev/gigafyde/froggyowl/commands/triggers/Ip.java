@@ -10,6 +10,6 @@ public class Ip extends Command {
     }
 
     public void execute(CommandEvent event) {
-        event.getTrigger().reply("The ip for our Minecraft server is **froggyowl.net**").mentionRepliedUser(false).queue();
+        event.getTrigger().reply("The ip for our Minecraft server is **mc.kingspond.net**").mentionRepliedUser(false).queue();
     }
 }

@@ -10,7 +10,9 @@ public class App extends Command {
     }
 
     public void execute(CommandEvent event) {
-        event.getTrigger().reply("Submit a staff application here!\n\n" +
-                "https://froggyowlnetwork.enjin.com/staff-application").mentionRepliedUser(false).queue();
+        event.getTrigger().reply("""
+                Submit a staff application here!
+
+                https://kingspond.enjin.com/staff-application""").mentionRepliedUser(false).queue();
     }
 }

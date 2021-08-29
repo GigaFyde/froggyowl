@@ -10,7 +10,9 @@ public class Appeal extends Command {
     }
 
     public void execute(CommandEvent event) {
-        event.getTrigger().reply("Submit a ban appeal if you think you've been wrongfully banned!\n\n" +
-                "https://froggyowlnetwork.enjin.com/banappeal").mentionRepliedUser(false).queue();
+        event.getTrigger().reply("""
+                Submit a ban appeal if you think you've been wrongfully banned!
+
+                https://kingspond.enjin.com/banappeal""").mentionRepliedUser(false).queue();
     }
 }
