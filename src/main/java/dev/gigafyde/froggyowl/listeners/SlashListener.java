@@ -13,14 +13,19 @@ public class SlashListener extends ListenerAdapter {
         switch (event.getName()) {
             case "apply":
                 apply(event);
+                break;
             case "appeal":
                 appeal(event);
+                break;
             case "ip":
                 ip(event);
+                break;
             case "store":
                 store(event);
+                break;
             case "support":
                 support(event);
+                break;
             default:
                 event.reply("I can't handle that command right now :(").setEphemeral(true).queue();
         }
