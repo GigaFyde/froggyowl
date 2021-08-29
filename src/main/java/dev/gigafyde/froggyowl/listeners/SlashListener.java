@@ -11,23 +11,12 @@ public class SlashListener extends ListenerAdapter {
         if (event.getGuild() == null)
             return;
         switch (event.getName()) {
-            case "apply":
-                apply(event);
-                break;
-            case "appeal":
-                appeal(event);
-                break;
-            case "ip":
-                ip(event);
-                break;
-            case "store":
-                store(event);
-                break;
-            case "support":
-                support(event);
-                break;
-            default:
-                event.reply("I can't handle that command right now :(").setEphemeral(true).queue();
+            case "apply" -> apply(event);
+            case "appeal" -> appeal(event);
+            case "ip" -> ip(event);
+            case "store" -> store(event);
+            case "support" -> support(event);
+            default -> event.reply("I can't handle that command right now :(").setEphemeral(true).queue();
         }
     }
 
