@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.slf4j:slf4j-simple:2.0.0-alpha4'
+    implementation 'org.slf4j:slf4j-simple:2.0.0-alpha5'
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation group: 'com.google.guava', name: 'guava', version: '30.1-jre'
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
